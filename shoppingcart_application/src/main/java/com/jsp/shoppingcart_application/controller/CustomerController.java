@@ -9,14 +9,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jsp.shoppingcart_application.dao.CartDao;
 import com.jsp.shoppingcart_application.dao.CustomerDao;
+import com.jsp.shoppingcart_application.dto.Cart;
 import com.jsp.shoppingcart_application.dto.Customer;
 
 @Controller
 public class CustomerController {
 	
 	@Autowired
-	CustomerDao dao;
+	CustomerDao cdao;
+	@Autowired
+	CartDao cartDao;
 	
 	@RequestMapping("/addcustomer")
 	public ModelAndView addCustomer()
@@ -32,7 +36,11 @@ public class CustomerController {
 	@RequestMapping("/savecustomer")
 	public ModelAndView saveCustomer(@ModelAttribute("customerobj") Customer c)
 	{
-		dao.saveCustomer(c);
+		Cart cart = new Cart();
+		c.setCart(cart);
+		
+		cartDao.saveCart(cart);
+		cdao.saveCustomer(c);
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", "Data Saved");
@@ -46,12 +54,14 @@ public class CustomerController {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		
-		Customer c = dao.findCustomerEmailAndPassword(email, password);
+		Customer c = cdao.findCustomerEmailAndPassword(email, password);
 		if(c!=null)
 		{
 			ModelAndView mav = new ModelAndView();
+			mav.addObject("msg","Login Successfully");
 			session.setAttribute("customerinfo", c);
 			mav.setViewName("customeroptions");
+			
 			return mav;
 		}
 		else 

@@ -9,7 +9,6 @@
 </head>
 <body>
 <form:form action="savecustomer" modelAttribute="customerobj">
-Enter id: 		<form:input path="id"/><br>
 Enter name:		<form:input path="name"/><br>
 Enter email:	<form:input path="email"/><br>
 Enter password:	<form:input path="password"/><br>

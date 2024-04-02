@@ -78,6 +78,16 @@ public class ProductController {
 		return mav;
 	}
 	
+	@RequestMapping("/fetchallproducts")
+	public ModelAndView fetchAllDetails()
+	{
+		List<Product> products = dao.findAllProducts();
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("productslist",products);
+		mav.setViewName("displayallproducts");
+		return mav;
+	}
+	
 	
 
 }

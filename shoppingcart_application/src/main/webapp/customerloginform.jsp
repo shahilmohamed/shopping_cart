@@ -4,13 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Customer Login here</title>
 </head>
 <body>
 ${msg }
 <form action="customerloginvalidation">
-Enter mail:	<input type="email"><br>
-Enter password:	<input type="password"><br>
+Enter mail:	<input type="email" name="email"><br>
+Enter password:	<input type="password" name="password"><br>
 <input type="submit">
 </form>
 </body>

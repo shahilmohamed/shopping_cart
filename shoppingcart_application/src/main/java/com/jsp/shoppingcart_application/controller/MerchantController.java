@@ -1,7 +1,5 @@
 package com.jsp.shoppingcart_application.controller;
 
-import java.sql.SQLIntegrityConstraintViolationException;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -33,6 +31,7 @@ public class MerchantController {
 
 	@RequestMapping("/savemerchant")
 	public ModelAndView saveMerchant(@ModelAttribute("merchantobj") Merchant m) {
+		dao.saveMerchant(m);
 
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("msg", "registered Successfully");

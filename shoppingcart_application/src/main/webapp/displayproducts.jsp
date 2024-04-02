@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Product list</title>
+<title>Products merchant list</title>
 </head>
 <body>
 	<%

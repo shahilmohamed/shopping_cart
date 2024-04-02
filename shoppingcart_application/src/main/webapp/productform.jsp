@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Product form</title>
 </head>
 <body>
 <form:form action="saveproduct" modelAttribute="productobj">

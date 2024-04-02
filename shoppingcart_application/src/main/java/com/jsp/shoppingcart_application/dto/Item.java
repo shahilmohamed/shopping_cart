@@ -13,6 +13,7 @@ public class Item {
 	private String brand;
 	private String category;
 	private int quantity;
+	private double price;
 	private int pid;
 	public int getId() {
 		return id;
@@ -44,5 +45,12 @@ public class Item {
 	public void setPid(int pid) {
 		this.pid = pid;
 	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	
 
 }
