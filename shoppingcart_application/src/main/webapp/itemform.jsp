@@ -8,7 +8,8 @@
 <title>Item form</title>
 </head>
 <body>
-	<form:form action="" modelAttribute="itemobj">
+	<form:form action="additemtocart" modelAttribute="itemobj">
+	<form:hidden path="pid"/>
 Brand:<form:input path="brand" readonly="true" />
 Category:<form:input path="category" readonly="true" />
 Price:<form:input path="price" readonly="true" />

@@ -12,6 +12,7 @@
 	<%
 	List<Product> products = (List<Product>) request.getAttribute("productslist");
 	%>
+	<a href="viewitemsfromcart">Show cart</a>
 	<table cellpadding="20px" border="1">
 		<th>brand</th>
 		<th>category</th>
@@ -24,7 +25,7 @@
 			<td><%=p.getBrand() %></td>
 			<td><%=p.getCategory() %></td>
 			<td><%=p.getPrice() %></td>
-			<td><a href="additemtocart?id=<%=p.getId()%>">Add to cart</a></td>
+			<td><a href="additem?id=<%=p.getId()%>">Add to cart</a></td>
 		</tr>
 		<%
 		}

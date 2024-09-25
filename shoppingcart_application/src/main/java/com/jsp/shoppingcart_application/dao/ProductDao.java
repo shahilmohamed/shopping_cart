@@ -1,5 +1,6 @@
 package com.jsp.shoppingcart_application.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,12 +12,15 @@ import javax.persistence.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.jsp.shoppingcart_application.dto.Merchant;
 import com.jsp.shoppingcart_application.dto.Product;
 
 @Repository
 public class ProductDao {
 	@Autowired
 	private EntityManagerFactory emf;
+	@Autowired
+	MerchantDao mdao;
 	
 	public void saveProduct(Product c)
 	{
@@ -77,6 +81,24 @@ public class ProductDao {
 		{
 			return null;
 		}
+	}
+	
+	public Merchant removeProductFromMerchant(int mid, int pid)
+	{
+		Merchant m = mdao.findMerchantById(mid);
+		List<Product> products = m.getProducts();
+		
+		List<Product> productsList = new ArrayList<Product>();
+		
+		for(Product p : products)
+		{
+			if(p.getId()!=pid)
+			{
+				productsList.add(p);
+			}
+		}
+		m.setProducts(productsList);
+		return m;
 	}
 
 }

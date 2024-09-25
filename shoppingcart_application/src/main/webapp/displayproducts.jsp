@@ -31,8 +31,8 @@
 			<td><%=p.getCategory()%></td>
 			<td><%=p.getPrice()%></td>
 			<td><%=p.getStock()%></td>
-			<td><a href="update.jsp?id=<%=p.getId() %>">update</a></td>
-			<td><a href="delete.jsp?id=<%=p.getId() %>">delete</a></td>
+			<td><a href="update?id=<%=p.getId() %>">update</a></td>
+			<td><a href="delete?id=<%=p.getId() %>">delete</a></td>
 		</tr>
 		<%
 		}

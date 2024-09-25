@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jsp.shoppingcart_application.dao.MerchantDao;
@@ -88,6 +89,18 @@ public class ProductController {
 		return mav;
 	}
 	
-	
+	@RequestMapping("/delete")
+	public ModelAndView deleteProduct(@RequestParam("id") int pid, HttpSession session)
+	{
+		Merchant m = (Merchant) session.getAttribute("merchantinfo");
+		Merchant merchant =  dao.removeProductFromMerchant(m.getId(), pid);
+		mdao.updateMerchant(merchant);
+		dao.deleteProductById(pid);
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setViewName("redirect://viewproduct");
+		return mav;
+	}
 
 }
